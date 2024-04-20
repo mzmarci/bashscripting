@@ -1,0 +1,9 @@
+#/bin/bash
+
+
+echo "my first shell scripting."
+echo "mercy loves devops!!!!!"
+
+mkdir "/c/Users/user/Bash/shell/devops_docker"
+echo "copying file into the new directory created"
+cp -r "myfirstfile_txt" "/c/Users/user/Bash/shell/devops_docker"

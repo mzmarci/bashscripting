@@ -1,0 +1,13 @@
+#!/bin/bash
+
+newdir="devopsfirst"
+newfile="myfirstfile_txt"
+sourcepath="/c/Users/user/Bash/shell/devops_docker"
+
+echo "my first shell scripting."
+echo "mercy loves devops!!!!!"
+
+mkdir ${newdir}
+echo "${newdir} has been created"
+cp -r  ${newfile}  ${newdir}
+echo "the ${newfile} has been coppied from source to ${newdir}"

@@ -1,0 +1,8 @@
+#/bin/bash
+
+mkdir "devopsnew"
+echo "the folder has been created"
+cp -r  "myfirstfile_txt"  "devopsnew"
+echo "the file has been copied from source to destination"
+
+
