@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name="Alexis"
+name="Marci"
 
 if [ "$name" = "Alexis" ];
 then

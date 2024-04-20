@@ -1,10 +1,10 @@
-!/bin/bash
+#!/bin/bash
 
-newdir=adduser
-newfile="test.sh"
-sourcepath="/c/Users/user/Bash/shell1"
-anotherdir="/c/Users/user/Bash/shell2"
-aicpa_path="/c/Users/user/Bash/shell"
+# newdir=adduser
+# newfile="test.sh"
+# sourcepath="/c/Users/user/Bash/shell1"
+# anotherdir="/c/Users/user/Bash/shell2"
+# aicpa_path="/c/Users/user/Bash/shell"
 
 newdir=$1
 newfile=$2
@@ -23,7 +23,7 @@ function newdir() {
 }
 
 function sourcepath() {
-    if [ -e "$3" ]; then
+    if [ -e "$sourcepath" ]; then
         echo "File '$3' exists"
     else 
         echo "File '$3' does not exist"
@@ -31,10 +31,10 @@ function sourcepath() {
 }
 
 function newfile() {
-    if [ -e "$2" ]; then
-        echo "File '$2' exists"
+    if [ -e "$newfile" ]; then
+        echo "File '$newfile' exists"
     else 
-        echo "File '$2' does not exist"
+        echo "File '$newfile' does not exist"
     fi
 }
 
@@ -48,11 +48,7 @@ echo -e "What function will you like to run?Enter 1 or 2.\\n1.interviewer \\n2.c
 read the_result
 function interviewer() {
 	echo 'This is interviewer function'
-    if [ -e "$2" ]; then
-        echo "File '$2' exists"
-    else 
-        echo "File '$2' does not exist"
-    fi
+    newfile
 }
 
 function commandLine() {
