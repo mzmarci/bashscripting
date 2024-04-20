@@ -16,7 +16,7 @@ newdir=$1
 newfile="myfirstfile_txt"
 sourcepath="/c/Users/user/Bash/shell1"
 anotherdir="/c/Users/user/Bash/shell1/if.sh"
-aicpa_path="/c/Users/user/Bash/shell/"
+aicpa_path="/c/Users/user/Bash/shell"
 
 echo "my first shell scripting."
 echo "mercy loves devops!!!!!"
