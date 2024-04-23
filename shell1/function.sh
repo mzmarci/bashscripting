@@ -2,31 +2,31 @@
 
 # newdir=adduser
 # newfile="test.sh"
-# sourcepath="/c/Users/user/Bash/shell1"
-# anotherdir="/c/Users/user/Bash/shell2"
-# aicpa_path="/c/Users/user/Bash/shell"
-
+# sourcepath="C:\Users\user\Bash\bashscripting\shell1"
+# anotherdir="C:\Users\user\Bash\bashscripting\shell2"
+# aicpa_path="C:\Users\user\Bash\bashscripting\shell"
+C:\Users\user\Bash\bashscripting
 newdir=$1
 newfile=$2
 sourcepath=$3
 anotherdir=$4
 aicpa_path=$5
 
-test for function
+# test for function
 
 function newdir() {
-    if [ -d "$1" ]; then
-        echo "Directory '$1' exists"
+    if [ -d "$newdir" ]; then
+        echo "Directory '$newdir' exists"
     else 
-        echo "Directory '$1' does not exist"
+        echo "Directory '$newdir' does not exist"
     fi
 }
 
 function sourcepath() {
     if [ -e "$sourcepath" ]; then
-        echo "File '$3' exists"
+        echo "File '$sourcepath' exists"
     else 
-        echo "File '$3' does not exist"
+        echo "File '$sourcepath' does not exist"
     fi
 }
 
@@ -38,9 +38,9 @@ function newfile() {
     fi
 }
 
-newdir
-sourcepath
-newfile
+# newdir
+# sourcepath
+# newfile
 
 
 echo "Welcome!"
@@ -61,3 +61,6 @@ elif [ $the_result == "2" ]; then
 else
 	echo 'Wrong Choice'
 fi
+
+
+TS=$(date +"%m%d%y%H%M%S")

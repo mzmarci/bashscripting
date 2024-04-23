@@ -2,10 +2,9 @@
 
 # newdir=adduser
 # newfile="test.sh"
-# sourcepath="/c/Users/user/Bash/shell1"
-# anotherdir="/c/Users/user/Bash/shell2"
-# aicpa_path="/c/Users/user/Bash/shell"
-
+# sourcepath="C:\Users\user\Bash\bashscripting\shell1"
+# anotherdir="C:\Users\user\Bash\bashscripting\shell2"
+# aicpa_path="C:\Users\user\Bash\bashscripting\shell"
 
 echo $1
 echo $2 

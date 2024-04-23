@@ -3,4 +3,9 @@
 name="Marci"
 course="deveops"
 
-echo ${name} loves ${course} very much
+echo ${name} loves ${course} very 
+
+now=$(date)
+
+echo "the date and time of the system is:"
+echo $now
