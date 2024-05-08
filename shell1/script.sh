@@ -1,29 +1,33 @@
 #!/bin/bash
-
+# ./script.sh backup may "C:\Users\user\Bash\bashscripting\shell1" if.sh f LOG_FILE
 #declaring command line argument
 
 BACKUP_LOC=$1
 # backup directory
+# the folder i want to copy
 BK_LOC=$2
 # backup directory name
+# another file inside the first folder
 PRACTICEDIR=$3
-# file path
+# file path = "C:\Users\user\Bash\bashscripting\shell
+# the file i want to copy, where it is located
 FILE=$4
 # file or directory
+# the name of the file i want to copy
 BACKUP_TYPE=$5
 # type of documents to be coppied (directory (d) or file (f)
 LOG_FILE=$6
 # file containing all echo's
 # variable Declaration
 FINAL_BK_LOC=${BACKUP_LOC}/${BK_LOC}
-TS=$(date +"%m%d%y%H%M%S")
+TS=$(date +"%m-%d-%y-%H-%M-%S")
 TIME_LOG=${TS}
 
 #creating the backup dirctory
 echo "we will be creating a directory in the backup location">>${TIME_LOG}
 if [[ $BACKUP_TYPE == 'f' ]]
 then
-echo "The backup content is a file">>${TIME_LOG}
+echo "The backup content is a file">>${TS}
 else
 echo "The backup content is a Directory">>${TIME_LOG}
 fi
@@ -45,6 +49,7 @@ echo "creating Backup directory"
 if [[ -d ${FINAL_BK_LOC} ]]
 then
 echo "the Backup directory ${FINAL_BK_LOC} already exists , sleeping for 10 seconds">>${TIME_LOG}
+mkdir -p ${FINAL_BK_LOC}/${TS}
 sleep 10
 else
 echo "The directory does not exist, creating new directory: ${FINAL_BK_LOC}">>${TIME_LOG}
@@ -107,35 +112,74 @@ fi
 ls ${DIRECTORY_INPUT}|nl -s '. '
 
 
+# deleting the folder created
+
+if [[ ! -f "${BACKUP_LOC}" ]]; then
+    echo "File does not exist" >> "${TIME_LOG}"
+    rm -r "${BACKUP_LOC}"
+elif [[ -d "${BACKUP_LOC}" ]]; then
+    echo "This is a directory" >> "${TIME_LOG}"
+    rm -r "${BACKUP_LOC}"
+else
+    echo "Backup location is neither a file nor a directory" >> "${TIME_LOG}"
+fi
+
+
+# checking if everything was deleted using nested if
+if [[ -f "${BK_LOC}" ]]; then
+   echo "this file doesnt exist"
+   if [[ -d "${BACKUP_LOC}" ]]; then
+   echo "this directory exit"
+   else 
+   echo "this directory doesnt exist anymore"
+   fi
+else
+    echo "this file was deleted successfully"
+fi
 #End of script ........
 
 
-delete_f_d () {
-echo "Starting the Delete Command Function"
-#Delete Command
-read -p "which directory do you want to delete a file or directory in?: " DIRECTORY_INPU
-chosen1=$(ls |nl -s '. ' | grep ${DIRECTORY_INPU} )
-echo "You Selected ${chosen1}" >>${TIME_LOG}
-#cd ${DIRECTORY_INPU}
+# delete_f_d () {
+# echo "Starting the Delete Command Function"
+# #Delete Command
+# read -p "which directory do you want to delete a file or directory in?: " DIRECTORY_INPU
+# chosen1=$(ls |nl -s '. ' | grep ${DIRECTORY_INPU} )
+# echo "You Selected ${chosen1}" >>${TIME_LOG}
+# #cd ${DIRECTORY_INPU}
 
-ls ${DIRECTORY_INPU}| nl -s '. '
-read -p "which file or directory do you want to delete?: " DIR_FILE_INPT
-chosen=$(ls ${DIRECTORY_INPU}|nl -s '. ' | grep ${DIR_FILE_INPT} )
-echo "You choose to delete: ${chosen}">>${TIME_LOG}
+# ls ${DIRECTORY_INPU}| nl -s '. '
+# read -p "which file or directory do you want to delete?: " DIR_FILE_INPT
+# chosen=$(ls ${DIRECTORY_INPU}|nl -s '. ' | grep ${DIR_FILE_INPT} )
+# echo "You choose to delete: ${chosen}">>${TIME_LOG}
 
-chosen2=`echo ${chosen} | cut -f 2 -d ' '`
+# chosen2=`echo ${chosen} | cut -f 2 -d ' '`
 
-#Prompt User For Verification to Delete
-read -p "Are you sure you want to delete ${chosen2}? Enter Y(yes) or N(no): " INPUT
-if [[ ${INPUT} == Y || ${INPUT} == y ]]
-then
-echo "Removing ${chosen2}"
-rm -r ${DIRECTORY_INPU}/${chosen2}
-elif [[ ${INPUT} == N || ${INPUT} == n ]]
-then
-echo "File not deleted"
-else
-echo "Invalid option"
-fi
-ls ${DIRECTORY_INPU}|nl -s '. '
-}
+# #Prompt User For Verification to Delete
+# read -p "Are you sure you want to delete ${chosen2}? Enter Y(yes) or N(no): " INPUT
+# if [[ ${INPUT} == Y || ${INPUT} == y ]]
+# then
+# echo "Removing ${chosen2}"
+# rm -r ${DIRECTORY_INPU}/${chosen2}
+# elif [[ ${INPUT} == N || ${INPUT} == n ]]
+# then
+# echo "File not deleted"
+# else
+# echo "Invalid option"
+# fi
+# ls ${DIRECTORY_INPU}|nl -s '. '
+# }
+
+
+
+
+
+
+
+
+ssh -i normal way to sign in into aws instance from mylocal "/home/oracle/scripts/create_bk_dir_wale.sh ${BASE_BK_LOC}"
+
+#Now Copying File to Destination
+echo "Copying File to Destination"
+#scp -i ${KEY_LOC}/${KP} ${BK_PATH}/${BK} ${DST_SERVER}:${BASE_BK_LOC}
+scp -i "${KEY_LOC}"/"${KP}" "${ORIGIN}" "${DST_SERVER}":"${BASE_BK_LOC}"
+echo "Ending File Copy"
